@@ -1,0 +1,2 @@
+# tradingBotApp
+Summer Project
