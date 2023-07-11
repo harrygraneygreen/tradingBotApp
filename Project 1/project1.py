@@ -76,55 +76,48 @@ print(final_dataframe)
 
 
 #SAVE this output into EXCEL
+# UNCOMMENT IF WANT TO EXPORT TO EXCEL!
 
-writer = pd.ExcelWriter('recommended trades.xlsx', engine='xlsxwriter')
+##########################################################################
 
-final_dataframe.to_excel(writer, 'recommended trades', index= False)
-
-#Formatting
-
-bg_color = '#0a0a23'
-font_color = '#ffffff'
-
-string_format = writer.book.add_format(
-    {
-        'font_color': font_color,
-        'bg_color': bg_color,
-        'border': 1
-    }
-)
-
-dollar_format = writer.book.add_format(
-    {
-        'num_format': '$0.00',
-        'font_color': font_color,
-        'bg_color': bg_color,
-        'border': 1
-    }
-)
-
-integer_format = writer.book.add_format(
-    {
-        'num_format': '0',
-        'font_color': font_color,
-        'bg_color': bg_color,
-        'border': 1
-    }
-)
-
-column_formats = {
-    'A': ['Ticker', string_format],
-    'B': ['Stock Price', dollar_format],
-    'C':['Number of Shares to Buy', integer_format]
-}
-
-for column in column_formats.keys():
-    writer.sheets['recommended trades'].set_column(f'{column}:{column}', 18, column_formats[column][1])
-    writer.sheets['recommended trades'].write(f'{column}1', column_formats[column][0], string_format)
+# writer = pd.ExcelWriter('recommended trades.xlsx', engine='xlsxwriter')
+# final_dataframe.to_excel(writer, 'recommended trades', index= False)
+# #Formatting
+# bg_color = '#0a0a23'
+# font_color = '#ffffff'
+# string_format = writer.book.add_format(
+#     {
+#         'font_color': font_color,
+#         'bg_color': bg_color,
+#         'border': 1
+#     }
+# )
+# dollar_format = writer.book.add_format(
+#     {
+#         'num_format': '$0.00',
+#         'font_color': font_color,
+#         'bg_color': bg_color,
+#         'border': 1
+#     }
+# )
+# integer_format = writer.book.add_format(
+#     {
+#         'num_format': '0',
+#         'font_color': font_color,
+#         'bg_color': bg_color,
+#         'border': 1
+#     }
+# )
+# column_formats = {
+#     'A': ['Ticker', string_format],
+#     'B': ['Stock Price', dollar_format],
+#     'C':['Number of Shares to Buy', integer_format]
+# }
+# for column in column_formats.keys():
+#     writer.sheets['recommended trades'].set_column(f'{column}:{column}', 18, column_formats[column][1])
+#     writer.sheets['recommended trades'].write(f'{column}1', column_formats[column][0], string_format)
     
-
-
-writer.close()
+# writer.close()
 
 
 
